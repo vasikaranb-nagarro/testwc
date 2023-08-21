@@ -438,7 +438,7 @@ class ut extends it {
     this.$$set({ message: t }), A();
   }
 }
-rt(ut, { message: {} }, [], [], !0);
+customElements.define("simple-component", rt(ut, { message: {} }, [], [], !0));
 export {
   ut as SimpleComponent
 };

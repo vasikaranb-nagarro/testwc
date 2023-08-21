@@ -1,3 +1,5 @@
+<svelte:options tag="simple-component" />
+
 <script>
 
     export let message = '';
