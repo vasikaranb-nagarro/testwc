@@ -1,7 +1,7 @@
 var J = Object.defineProperty;
 var R = (e, t, n) => t in e ? J(e, t, { enumerable: !0, configurable: !0, writable: !0, value: n }) : e[t] = n;
 var f = (e, t, n) => (R(e, typeof t != "symbol" ? t + "" : t, n), n);
-function p() {
+function b() {
 }
 function T(e) {
   return e();
@@ -27,7 +27,7 @@ function B(e, t) {
 function g(e, t, n) {
   e.insertBefore(t, n || null);
 }
-function _(e) {
+function m(e) {
   e.parentNode && e.parentNode.removeChild(e);
 }
 function E(e) {
@@ -59,45 +59,45 @@ function G(e) {
   ), t;
 }
 let C;
-function m(e) {
+function p(e) {
   C = e;
 }
-const h = [], v = [];
-let d = [];
+const d = [], v = [];
+let _ = [];
 const M = [], K = /* @__PURE__ */ Promise.resolve();
 let O = !1;
 function Q() {
   O || (O = !0, K.then(A));
 }
 function j(e) {
-  d.push(e);
+  _.push(e);
 }
 const x = /* @__PURE__ */ new Set();
-let a = 0;
+let h = 0;
 function A() {
-  if (a !== 0)
+  if (h !== 0)
     return;
   const e = C;
   do {
     try {
-      for (; a < h.length; ) {
-        const t = h[a];
-        a++, m(t), W(t.$$);
+      for (; h < d.length; ) {
+        const t = d[h];
+        h++, p(t), W(t.$$);
       }
     } catch (t) {
-      throw h.length = 0, a = 0, t;
+      throw d.length = 0, h = 0, t;
     }
-    for (m(null), h.length = 0, a = 0; v.length; )
+    for (p(null), d.length = 0, h = 0; v.length; )
       v.pop()();
-    for (let t = 0; t < d.length; t += 1) {
-      const n = d[t];
+    for (let t = 0; t < _.length; t += 1) {
+      const n = _[t];
       x.has(n) || (x.add(n), n());
     }
-    d.length = 0;
-  } while (h.length);
+    _.length = 0;
+  } while (d.length);
   for (; M.length; )
     M.pop()();
-  O = !1, x.clear(), m(e);
+  O = !1, x.clear(), p(e);
 }
 function W(e) {
   if (e.fragment !== null) {
@@ -108,7 +108,7 @@ function W(e) {
 }
 function X(e) {
   const t = [], n = [];
-  d.forEach((s) => e.indexOf(s) === -1 ? t.push(s) : n.push(s)), n.forEach((s) => s()), d = t;
+  _.forEach((s) => e.indexOf(s) === -1 ? t.push(s) : n.push(s)), n.forEach((s) => s()), _ = t;
 }
 const Y = /* @__PURE__ */ new Set();
 function Z(e, t) {
@@ -117,8 +117,8 @@ function Z(e, t) {
 function tt(e, t, n) {
   const { fragment: s, after_update: c } = e.$$;
   s && s.m(t, n), j(() => {
-    const r = e.$$.on_mount.map(T).filter(H);
-    e.$$.on_destroy ? e.$$.on_destroy.push(...r) : w(r), e.$$.on_mount = [];
+    const $ = e.$$.on_mount.map(T).filter(H);
+    e.$$.on_destroy ? e.$$.on_destroy.push(...$) : w($), e.$$.on_mount = [];
   }), c.forEach(j);
 }
 function et(e, t) {
@@ -126,17 +126,17 @@ function et(e, t) {
   n.fragment !== null && (X(n.after_update), w(n.on_destroy), n.fragment && n.fragment.d(t), n.on_destroy = n.fragment = null, n.ctx = []);
 }
 function nt(e, t) {
-  e.$$.dirty[0] === -1 && (h.push(e), Q(), e.$$.dirty.fill(0)), e.$$.dirty[t / 31 | 0] |= 1 << t % 31;
+  e.$$.dirty[0] === -1 && (d.push(e), Q(), e.$$.dirty.fill(0)), e.$$.dirty[t / 31 | 0] |= 1 << t % 31;
 }
-function st(e, t, n, s, c, r, i, o = [-1]) {
+function st(e, t, n, s, c, $, i, r = [-1]) {
   const u = C;
-  m(e);
-  const $ = e.$$ = {
+  p(e);
+  const o = e.$$ = {
     fragment: null,
     ctx: [],
     // state
-    props: r,
-    update: p,
+    props: $,
+    update: b,
     not_equal: c,
     bound: P(),
     // lifecycle
@@ -148,24 +148,24 @@ function st(e, t, n, s, c, r, i, o = [-1]) {
     context: new Map(t.context || (u ? u.$$.context : [])),
     // everything else
     callbacks: P(),
-    dirty: o,
+    dirty: r,
     skip_bound: !1,
     root: t.target || u.$$.root
   };
-  i && i($.root);
-  let b = !1;
-  if ($.ctx = n ? n(e, t.props || {}, (l, N, ...S) => {
+  i && i(o.root);
+  let a = !1;
+  if (o.ctx = n ? n(e, t.props || {}, (l, N, ...S) => {
     const L = S.length ? S[0] : N;
-    return $.ctx && c($.ctx[l], $.ctx[l] = L) && (!$.skip_bound && $.bound[l] && $.bound[l](L), b && nt(e, l)), N;
-  }) : [], $.update(), b = !0, w($.before_update), $.fragment = s ? s($.ctx) : !1, t.target) {
+    return o.ctx && c(o.ctx[l], o.ctx[l] = L) && (!o.skip_bound && o.bound[l] && o.bound[l](L), a && nt(e, l)), N;
+  }) : [], o.update(), a = !0, w(o.before_update), o.fragment = s ? s(o.ctx) : !1, t.target) {
     if (t.hydrate) {
       const l = D(t.target);
-      $.fragment && $.fragment.l(l), l.forEach(_);
+      o.fragment && o.fragment.l(l), l.forEach(m);
     } else
-      $.fragment && $.fragment.c();
+      o.fragment && o.fragment.c();
     t.intro && Z(e.$$.fragment), tt(e, t.target, t.anchor), A();
   }
-  m(u);
+  p(u);
 }
 let I;
 typeof HTMLElement == "function" && (I = class extends HTMLElement {
@@ -206,64 +206,65 @@ typeof HTMLElement == "function" && (I = class extends HTMLElement {
   }
   async connectedCallback() {
     if (this.$$cn = !0, !this.$$c) {
-      let t = function(r) {
+      let n = function(i) {
         return () => {
-          let i;
+          let r;
           return {
             c: function() {
-              i = E("slot"), r !== "default" && z(i, "name", r);
+              r = E("slot"), i !== "default" && z(r, "name", i);
             },
             /**
              * @param {HTMLElement} target
              * @param {HTMLElement} [anchor]
              */
-            m: function($, b) {
-              g($, i, b);
+            m: function(a, l) {
+              g(a, r, l);
             },
-            d: function($) {
-              $ && _(i);
+            d: function(a) {
+              a && m(r);
             }
           };
         };
       };
+      var t = n;
       if (await Promise.resolve(), !this.$$cn)
         return;
-      const n = {}, s = G(this);
-      for (const r of this.$$s)
-        r in s && (n[r] = [t(r)]);
-      for (const r of this.attributes) {
-        const i = this.$$g_p(r.name);
-        i in this.$$d || (this.$$d[i] = y(i, r.value, this.$$p_d, "toProp"));
+      const s = {}, c = G(this);
+      for (const i of this.$$s)
+        i in c && (s[i] = [n(i)]);
+      for (const i of this.attributes) {
+        const r = this.$$g_p(i.name);
+        r in this.$$d || (this.$$d[r] = y(r, i.value, this.$$p_d, "toProp"));
       }
       this.$$c = new this.$$ctor({
         target: this.shadowRoot || this,
         props: {
           ...this.$$d,
-          $$slots: n,
+          $$slots: s,
           $$scope: {
             ctx: []
           }
         }
       });
-      const c = () => {
+      const $ = () => {
         this.$$r = !0;
-        for (const r in this.$$p_d)
-          if (this.$$d[r] = this.$$c.$$.ctx[this.$$c.$$.props[r]], this.$$p_d[r].reflect) {
-            const i = y(
-              r,
-              this.$$d[r],
+        for (const i in this.$$p_d)
+          if (this.$$d[i] = this.$$c.$$.ctx[this.$$c.$$.props[i]], this.$$p_d[i].reflect) {
+            const r = y(
+              i,
+              this.$$d[i],
               this.$$p_d,
               "toAttribute"
             );
-            i == null ? this.removeAttribute(r) : this.setAttribute(this.$$p_d[r].attribute || r, i);
+            r == null ? this.removeAttribute(i) : this.setAttribute(this.$$p_d[i].attribute || i, r);
           }
         this.$$r = !1;
       };
-      this.$$c.$$.after_update.push(c), c();
-      for (const r in this.$$l)
-        for (const i of this.$$l[r]) {
-          const o = this.$$c.$on(r, i);
-          this.$$l_u.set(i, o);
+      this.$$c.$$.after_update.push($), $();
+      for (const i in this.$$l)
+        for (const r of this.$$l[i]) {
+          const u = this.$$c.$on(i, r);
+          this.$$l_u.set(r, u);
         }
       this.$$l = {};
     }
@@ -286,8 +287,8 @@ typeof HTMLElement == "function" && (I = class extends HTMLElement {
   }
 });
 function y(e, t, n, s) {
-  var r;
-  const c = (r = n[e]) == null ? void 0 : r.type;
+  var $;
+  const c = ($ = n[e]) == null ? void 0 : $.type;
   if (t = c === "Boolean" && typeof t != "boolean" ? t != null : t, !s || !n[e])
     return t;
   if (s === "toAttribute")
@@ -315,38 +316,38 @@ function y(e, t, n, s) {
         return t;
     }
 }
-function rt(e, t, n, s, c, r) {
+function it(e, t, n, s, c, $) {
   let i = class extends I {
     constructor() {
       super(e, n, c), this.$$p_d = t;
     }
     static get observedAttributes() {
       return Object.keys(t).map(
-        (o) => (t[o].attribute || o).toLowerCase()
+        (r) => (t[r].attribute || r).toLowerCase()
       );
     }
   };
-  return Object.keys(t).forEach((o) => {
-    Object.defineProperty(i.prototype, o, {
+  return Object.keys(t).forEach((r) => {
+    Object.defineProperty(i.prototype, r, {
       get() {
-        return this.$$c && o in this.$$c ? this.$$c[o] : this.$$d[o];
+        return this.$$c && r in this.$$c ? this.$$c[r] : this.$$d[r];
       },
       set(u) {
-        var $;
-        u = y(o, u, t), this.$$d[o] = u, ($ = this.$$c) == null || $.$set({ [o]: u });
+        var o;
+        u = y(r, u, t), this.$$d[r] = u, (o = this.$$c) == null || o.$set({ [r]: u });
       }
     });
-  }), s.forEach((o) => {
-    Object.defineProperty(i.prototype, o, {
+  }), s.forEach((r) => {
+    Object.defineProperty(i.prototype, r, {
       get() {
         var u;
-        return (u = this.$$c) == null ? void 0 : u[o];
+        return (u = this.$$c) == null ? void 0 : u[r];
       }
     });
-  }), r && (i = r(i)), e.element = /** @type {any} */
+  }), $ && (i = $(i)), e.element = /** @type {any} */
   i, i;
 }
-class it {
+class rt {
   constructor() {
     /**
      * ### PRIVATE API
@@ -367,7 +368,7 @@ class it {
   }
   /** @returns {void} */
   $destroy() {
-    et(this, 1), this.$destroy = p;
+    et(this, 1), this.$destroy = b;
   }
   /**
    * @template {Extract<keyof Events, string>} K
@@ -377,7 +378,7 @@ class it {
    */
   $on(t, n) {
     if (!H(n))
-      return p;
+      return b;
     const s = this.$$.callbacks[t] || (this.$$.callbacks[t] = []);
     return s.push(n), () => {
       const c = s.indexOf(n);
@@ -395,29 +396,29 @@ class it {
 const ct = "4";
 typeof window < "u" && (window.__svelte || (window.__svelte = { v: /* @__PURE__ */ new Set() })).v.add(ct);
 function ot(e) {
-  let t, n, s, c, r;
+  let t, n, s, c, $;
   return {
     c() {
-      t = E("h1"), t.textContent = "This is a web component rendered via import map", n = q(), s = E("p"), c = k("the passed string is "), r = k(
+      t = E("h1"), t.textContent = "This is a web component rendered via import map", n = q(), s = E("p"), c = k("the passed string is "), $ = k(
         /*message*/
         e[0]
       );
     },
-    m(i, o) {
-      g(i, t, o), g(i, n, o), g(i, s, o), B(s, c), B(s, r);
+    m(i, r) {
+      g(i, t, r), g(i, n, r), g(i, s, r), B(s, c), B(s, $);
     },
-    p(i, [o]) {
-      o & /*message*/
+    p(i, [r]) {
+      r & /*message*/
       1 && F(
-        r,
+        $,
         /*message*/
         i[0]
       );
     },
-    i: p,
-    o: p,
+    i: b,
+    o: b,
     d(i) {
-      i && (_(t), _(n), _(s));
+      i && (m(t), m(n), m(s));
     }
   };
 }
@@ -427,7 +428,7 @@ function $t(e, t, n) {
     "message" in c && n(0, s = c.message);
   }, [s];
 }
-class ut extends it {
+class ut extends rt {
   constructor(t) {
     super(), st(this, t, $t, ot, V, { message: 0 });
   }
@@ -438,7 +439,4 @@ class ut extends it {
     this.$$set({ message: t }), A();
   }
 }
-customElements.define("simple-component", rt(ut, { message: {} }, [], [], !0));
-export {
-  ut as SimpleComponent
-};
+customElements.define("simple-component", it(ut, { message: {} }, [], [], !0));
